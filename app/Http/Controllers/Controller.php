@@ -18,7 +18,7 @@ class Controller extends BaseController
 
         $news = [];
 
-        for($i = 0; $i < 10; $i++) {
+        for($i = 0; $i < 4; $i++) {
             $news[] = [
                 'id' => $i,
                 'title' => $faker->jobTitle(),
@@ -39,5 +39,20 @@ class Controller extends BaseController
             'description' => $faker->text(250),
             'author' => $faker->userName()
         ];
+    }
+
+    public function getNewsCategory(): array
+    {
+        $faker = Factory::create();
+
+        $newsCategory = [];
+
+        for($j = 0; $j < 5; $j++) {
+            $newsCategory[] = [
+                'id' => $j,
+                'title' => $faker->jobTitle()
+            ];
+        }
+        return $newsCategory;
     }
 }
