@@ -47,7 +47,8 @@ Route::get('/news/categories', [CategoryController::class, 'index'])
 
 //welcome routes
 
-Route::get('/news/welcome', [WelcomeController::class, 'index']);
+Route::get('/news/welcome', [WelcomeController::class, 'index'])
+    ->name('news.welcome');;
 
 
 
