@@ -18,7 +18,7 @@ class Controller extends BaseController
 
         $news = [];
 
-        for($i = 0; $i < 4; $i++) {
+        for($i = 0; $i < 6; $i++) {
             $news[] = [
                 'id' => $i,
                 'title' => $faker->jobTitle(),
@@ -47,7 +47,7 @@ class Controller extends BaseController
 
         $newsCategory = [];
 
-        for($j = 0; $j < 5; $j++) {
+        for($j = 0; $j < 6; $j++) {
             $newsCategory[] = [
                 'id' => $j,
                 'title' => $faker->jobTitle()

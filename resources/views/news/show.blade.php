@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+  Новость @parent
+@endsection
+
 @section('header')
     <div>
         <h1>{{ $newsItem['title'] }}</h1>
