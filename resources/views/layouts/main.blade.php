@@ -30,7 +30,7 @@
       </section>
       <div class="album py-5 bg-light">
         <div class="container">
-            @yield('content')
+          @yield('content')
         </div>
       </div>
     </main>
