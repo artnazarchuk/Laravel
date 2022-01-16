@@ -22,7 +22,7 @@ class Controller extends BaseController
             $news[] = [
                 'id' => $i,
                 'title' => $faker->jobTitle(),
-                'description' => $faker->text(250),
+                'description' => "<p>" . $faker->text(250) . "</p>",
                 'author' => $faker->userName()
             ];
         }
