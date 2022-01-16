@@ -29,7 +29,9 @@
             <p class="card-text">{!! $newsItem['description'] !!}</p> {{-- '{!! !!}'- это для подключения тегов в контроллере --}}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть подробнее</button>
+                <form action="{{ route('news.show', ['id' => $newsItem['id']]) }}">
+                  <button class="btn btn-sm btn-outline-secondary">Смотреть подробнее</button>
+                </form> 
               </div>
               <small class="text-muted">{{ now('Europe/Moscow') }}</small>
             </div>
