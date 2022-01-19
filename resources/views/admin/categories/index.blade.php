@@ -14,10 +14,7 @@
 @endsection
 
 @section('content')
-@endsection
+    <div class="table-responsive">
 
-@push('js')
-    <script>
-        alert("Hello, categories!");
-    </script>
-@endpush
+    </div>
+@endsection

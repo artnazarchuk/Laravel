@@ -24,7 +24,24 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return "Создать новость";
+        $news = [
+            'news' => [
+            [
+                'title' => 1,
+                'description' => 1
+            ],
+            [
+                'title' => 2,
+                'description' => 1
+            ],
+            [
+                'title' => 3,
+                'description' => 1
+            ]
+        ]];
+        $get = data_get($news, 'news.*.title');
+        dd($get);
+        return view('admin.news.create');
     }
 
     /**
@@ -35,7 +52,11 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->input('news.*.title'));
+        $request->validate([
+            'title' => ['required', 'string', 'min:5']
+        ]);
+        dd($request->all());
     }
 
     /**
