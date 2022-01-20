@@ -25,7 +25,7 @@
 </div>
 <br/>
 <div>
-    <form method="post">
+    <form method="post" acton="{{ route('news.welcome') }}">       {{--  ?????? тут нужно разобраться The POST method is not supported for this route --}}
         <div class="form-group">
             <label for="name">Ваше имя</label>
             <input type="text" class="form-control" name="name" id="name" required>
@@ -38,5 +38,27 @@
         <button type="submit" class="btn btn-primary" style="float: right;">Оставить комментарий</button>
     </form>
 </div>
-<br/>
+<br/><br/><hr/>
+<div>
+    <form method="post">
+        <div class="form-group">
+            <label for="user">Ваше имя</label>
+            <input type="text" class="form-control" name="user" id="user">
+        </div>
+        <div class="form-group">
+            <label for="phone">Ваш телефон</label>
+            <input type="tel" class="form-control" name="phone" id="phone">
+        </div>
+        <div class="form-group">
+            <label for="mail">Ваша элетронная почта</label>
+            <input type="email" class="form-control" name="mail" id="mail">
+        </div>
+        <div class="form-group">
+            <label for="info">Какую информацию вы хотели бы получить</label>
+            <textarea class="form-control" name="info" id="info"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" style="float: right;">Оставить заказ</button>
+    </form>
+</div>
 @endsection
