@@ -52,4 +52,5 @@ Route::get('/news/categories', [CategoryController::class, 'index'])
 Route::get('/news/welcome', [WelcomeController::class, 'index'])
     ->name('news.welcome');
 
+    
 Route::resource('/commit', CommitController::class);

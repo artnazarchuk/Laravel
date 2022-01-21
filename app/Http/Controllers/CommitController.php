@@ -14,8 +14,7 @@ class CommitController extends Controller
      */
     public function index()
     {   
-        dump([1, 2, 3, 55]);
-        
+        dd([1, 8, 9]);
     }
 
     /**
@@ -25,7 +24,7 @@ class CommitController extends Controller
      */
     public function create()
     {
-        dump([1, 2, 3, 4]);
+        //
     }
 
     /**
@@ -36,7 +35,7 @@ class CommitController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request->all());
+        dd($request->all());
     }
 
     /**
