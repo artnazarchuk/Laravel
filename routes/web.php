@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CommitController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
@@ -27,11 +28,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
-    ->name('index');
+        ->name('index');
     Route::resource('/news', AdminNewsController::class);
     Route::resource('/categories', AdminCategoryController::class);
 });
 
+//news.store
 //news routes
 
 Route::get('/news', [NewsController::class, 'index'])
@@ -49,3 +51,5 @@ Route::get('/news/categories', [CategoryController::class, 'index'])
 
 Route::get('/news/welcome', [WelcomeController::class, 'index'])
     ->name('news.welcome');
+
+Route::resource('/commit', CommitController::class);

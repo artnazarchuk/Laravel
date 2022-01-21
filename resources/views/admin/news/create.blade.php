@@ -20,7 +20,7 @@
         @endforeach
     @endif
     <div>
-        <form method="post" action="{{ route('admin.news.store', ['q' => 11]) }}">
+        <form method="post" action="{{ route('news.store', ['q' => 11]) }}">
             @csrf
             <div class="form-group">
                 <label for="title">Наименование</label>

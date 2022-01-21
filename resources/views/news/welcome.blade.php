@@ -25,7 +25,8 @@
 </div>
 <br/>
 <div>
-    <form method="post" acton="{{ route('news.welcome') }}">       {{--  ?????? тут нужно разобраться The POST method is not supported for this route --}}
+    <a href="{{ route('commit.store') }}">Перейти к комментарию</a>
+    <form method="post" acton="{{ route('commit.store') }}">       {{--  ?????? тут нужно разобраться The POST method is not supported for this route --}}
         <div class="form-group">
             <label for="name">Ваше имя</label>
             <input type="text" class="form-control" name="name" id="name" required>
