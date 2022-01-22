@@ -25,8 +25,7 @@
 </div>
 <br/>
 <div>
-    <a href="{{ route('commit.store') }}">Перейти к комментарию</a> {{--  ?????? почему-то поподает в index --}}
-    <form method="post" acton="{{ route('commit.store') }}">       {{--  ?????? тут нужно разобраться The POST method is not supported for this route --}}
+    <form method="post" action="{{ route('commit.store') }}">
         @csrf
         <div class="form-group">
             <label for="name">Ваше имя</label>
