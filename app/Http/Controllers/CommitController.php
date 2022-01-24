@@ -35,7 +35,10 @@ class CommitController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = json_encode($request->except('_token'));
+        
+        file_put_contents(public_path('commitdata/data.json'), $data);
+        return response()->json($request->all());
     }
 
     /**
