@@ -13,8 +13,6 @@ class Category extends Model
     
     public function getNewsCategory(): array
     {
-
-        //return \DB::select("SELECT id, title, slug, author, status, description FROM {$this->table}");
         return \DB::table($this->table)
             ->select(['id', 'title', 'description'])
             ->get()
