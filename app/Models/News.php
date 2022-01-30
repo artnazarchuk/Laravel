@@ -3,28 +3,41 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
     use HasFactory;
 
-    protected $table = 'news';
-    
-    public function getNews(): array
-    {
-        
-        //return \DB::select("SELECT id, title, slug, author, status, description FROM {$this->table}");
-        return \DB::table($this->table)
-            ->select(['id', 'title', 'slug', 'author', 'status', 'description'])
-            ->get()
-            ->toArray();
-    }
+    public static $availableFields = ['id', 'title', 'author', 'status', 'description', 'created_at'];
 
-    public function getNewsById(int $id)
+    protected $table = 'news';
+
+    protected $fillable = [
+        'category_id',
+        'title',
+        'slug',
+        'author',
+        'status',
+        'description'
+    ];
+
+    // protected $guarded = [
+    //     'id'
+    // ];
+    
+    // public function getTitleAttribute($value)
+    // {
+    //     return mb_strtoupper($value);
+    // }
+
+    protected $casts = [
+        'display' => 'boolean'
+    ];
+
+    public function category(): BelongsTo
     {
-        // return \DB::select("SELECT id, title, slug, author, status, description FROM {$this->table} 
-        //                     WHERE id = :id", [':id' => $id]);
-        return \DB::table($this->table)->find($id);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }

@@ -19,20 +19,22 @@
             <thead>
                 <tr>
                     <th>#ID</th>
+                    <th>Колл-во новостей</th>
                     <th>Загаловок</th>
                     <th>Описание</th>
                     <th>Опции</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($categoryList as $category)
+                @forelse($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
+                        <td>{{ $category->news->count() }}</td>
                         <td>{{ $category->title }}</td>
                         <td>{{ $category->description }}</td>
                         <td>
-                            {{-- <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}">Ред.</a> &nbsp;
-                            <a href="javascript:;" style="color:red;">Уд.</a> --}}
+                            <a href="{{ route('admin.categories.edit', ['category' => $category]) }}">Ред.</a> &nbsp;
+                            <a href="javascript:;" style="color:red;">Уд.</a>
                         </td>
                     </tr>
                 @empty
@@ -40,5 +42,6 @@
                 @endforelse
             </tbody>
         </table>
+        {{ $categories->links() }}
     </div>
 @endsection

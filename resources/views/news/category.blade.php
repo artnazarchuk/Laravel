@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
-        @foreach($category as $newsItem)
+        @foreach($categories as $newsItem)
         <div class="col">
             <div class="card shadow-sm">
                 <div>

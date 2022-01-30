@@ -21,7 +21,7 @@
           <div class="card-body">
             <div class="h5">
                 <strong>
-                    <a href="{{ route('news.show', ['id' => $news->id]) }}">
+                    <a href="{{ route('news.show', ['news' => $news->id]) }}">
                         {{ $news->title }}
                     </a>
                 </strong>
@@ -29,7 +29,7 @@
             <p class="card-text">{!! $news->description !!}</p> {{-- '{!! !!}'- это для подключения тегов в контроллере --}}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <form action="{{ route('news.show', ['id' => $news->id]) }}">
+                <form action="{{ route('news.show', ['news' => $news->id]) }}">
                   <button class="btn btn-sm btn-outline-secondary">Смотреть подробнее</button>
                 </form> 
               </div>

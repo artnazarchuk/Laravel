@@ -38,8 +38,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])
-    ->where('id', '\d+')
+Route::get('/news/{news}', [NewsController::class, 'show'])
+    ->where('news', '\d+')
     ->name('news.show');
 
 //category routes
@@ -54,3 +54,11 @@ Route::get('/news/welcome', [WelcomeController::class, 'index'])
 
     
 Route::resource('/commit', CommitController::class);
+
+Route::get('/collection', function() {
+    $array = ['Anna', 'petiya', 'Vasia', 'kolya', 'Olya', 'Valia'];
+    $collection = collect($array);
+    dd($collection->map(function ($item) {
+        return mb_strtoupper($item);
+    })->sortKeys());
+});
