@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CommitController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
@@ -62,3 +63,5 @@ Route::get('/collection', function() {
         return mb_strtoupper($item);
     })->sortKeys());
 });
+
+Route::resource('/content', ContentController::class);

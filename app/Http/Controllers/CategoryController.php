@@ -18,6 +18,6 @@ class CategoryController extends Controller
         $categories = Category::with('news')->get();
         return view('news.categories', [
         'categories' => $categories
-]);
+        ]);
     }
 }
