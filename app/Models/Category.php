@@ -10,6 +10,13 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $table = 'categories';
+
+    protected $fillable = [
+        'title',
+        'description'
+    ];
+
     // protected $table = 'categories';
     
     // public function getNewsCategory(): array

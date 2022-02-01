@@ -15,6 +15,9 @@
 
 @section('content')
     <div class="table-responsive">
+
+        @include('inc.message')
+
         <table class="table table-bordered">
             <thead>
                 <tr>
