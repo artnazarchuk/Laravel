@@ -110,6 +110,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try{
+            $category->delete();
+        }catch(\Exception $e) {
+            \Log::error("Error dalete news item");
+        }
     }
 }

@@ -121,6 +121,10 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        try{
+            $news->delete();
+        }catch(\Exception $e) {
+            \Log::error("Error dalete news item");
+        }
     }
 }
