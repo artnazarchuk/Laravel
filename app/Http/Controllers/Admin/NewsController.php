@@ -123,6 +123,7 @@ class NewsController extends Controller
     {
         try{
             $news->delete();
+            return response()->json('ok');
         }catch(\Exception $e) {
             \Log::error("Error dalete news item");
         }
