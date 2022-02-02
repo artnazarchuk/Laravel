@@ -56,10 +56,10 @@
 @push('js')
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            const el = document.querySelectorAll('.delete');
-                el.forEach(function (e, k) {
-                   e.addEventListener('click', function() {
-                    const id = e.getAttribute('rel');
+            const elements = document.querySelectorAll('.delete');
+            elements.forEach(function (element, key) {
+                    element.addEventListener('click', function() {
+                    const id = element.getAttribute('rel');
                         if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
                             send('/admin/news/' + id).then( function () {
                                 location.reload();

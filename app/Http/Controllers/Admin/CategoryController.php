@@ -113,7 +113,7 @@ class CategoryController extends Controller
         try{
             $category->delete();
             return response()->json('ok');
-        }catch(\Exception $e) {
+        }catch(\Exception $element) {
             \Log::error("Error dalete news item");
         }
     }
