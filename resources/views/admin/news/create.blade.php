@@ -18,9 +18,8 @@
     <div>
         <form method="post" action="{{ route('admin.news.store')}}">
             @csrf
-
             <div class="form-group">
-                <label for="title">Категория</label>
+                <label for="category_id">Категория</label>
                 <select class="form-control" name="category_id" id="category_id">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
@@ -28,7 +27,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="category_id">Наименование</label>
+                <label for="title">Наименование</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
             </div>
             <div class="form-group">

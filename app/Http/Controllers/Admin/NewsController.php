@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\News;
 use App\Models\Category;
+use App\Http\Requests\News\CreateRequest;
+use App\Http\Requests\News\EditRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -48,14 +50,9 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'min:5']
-        ]);
-
-        $created = News::create(
-            $request->only(['category_id', 'title', 'author', 'status', 'description']) + [
+        $created = News::create($request->validated() + [
                 'slug' => \Str::slug($request->input('title'))
             ]
         );
@@ -87,8 +84,10 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+        $categories = Category::all();
         return view('admin.news.edit', [
-            'news' => $news
+            'news' => $news,
+            'categories' => $categories
         ]);
     }
 
@@ -99,9 +98,9 @@ class NewsController extends Controller
      * @param  News $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(EditRequest $request, News $news)
     {
-        $updated = $news->fill($request->only(['category_id', 'title', 'author', 'status', 'description']) + [
+        $updated = $news->fill($request->validated() + [
             'slug' => \Str::slug($request->input('title'))
         ])->save();
 
