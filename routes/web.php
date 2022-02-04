@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])  // тут нужно разобраться с {id} всё ломается во вьюхе 
-    ->where('news', '\d+')                                   // resources/views/news и не прходит тест
+    ->where('news', '\d+')                                   // resources/views/news и не прходит тест c {news}
     ->name('news.show');
 
 //category routes
