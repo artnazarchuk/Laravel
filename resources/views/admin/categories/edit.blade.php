@@ -14,22 +14,20 @@
 @endsection
 
 @section('content')
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            <x-alert type="danger" :message="$error"></x-alert>
-        @endforeach
-    @endif
     <div>
+        @include('inc.message')
         <form method="post" action="{{ route('admin.categories.update', ['category' => $category]) }}">
             @csrf
             @method('put')
             <div class="form-group">
                 <label for="title">Наименование категории</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $category->title }}">
+                @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
                 <label for="description">Описание категории</label>
                 <textarea class="form-control" name="description" id="description">{!! $category->description !!}</textarea>
+                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
             <button type="submit" class="btn btn-success" style="float: right;">Сохранить</button>

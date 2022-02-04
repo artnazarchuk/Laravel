@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{news}', [NewsController::class, 'show'])  // тут нужно разобраться с {id} всё ломается во вьюхе 
+Route::get('/news/{id}', [NewsController::class, 'show'])  // тут нужно разобраться с {id} всё ломается во вьюхе 
     ->where('news', '\d+')                                   // resources/views/news и не прходит тест
     ->name('news.show');
 

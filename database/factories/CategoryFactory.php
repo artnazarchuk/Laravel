@@ -13,9 +13,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->jobTitle();
         return [
-            'title' => 'Some Title',
-            'description' => 'Some Description'
+            'title' => $title,
+            'description' => $this->faker->text(150)
         ];
     }
 }
