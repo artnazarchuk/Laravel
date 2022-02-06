@@ -17,16 +17,6 @@ class Category extends Model
         'description'
     ];
 
-    // protected $table = 'categories';
-    
-    // public function getNewsCategory(): array
-    // {
-    //     return \DB::table($this->table)
-    //         ->select(['id', 'title', 'description'])
-    //         ->get()
-    //         ->toArray();
-    // }
-
     public function news(): HasMany
     {
         return $this->hasMany(News::class, 'category_id', 'id');

@@ -23,15 +23,6 @@ class News extends Model
         'description'
     ];
 
-    // protected $guarded = [
-    //     'id'
-    // ];
-    
-    // public function getTitleAttribute($value)
-    // {
-    //     return mb_strtoupper($value);
-    // }
-
     protected $casts = [
         'display' => 'boolean'
     ];
