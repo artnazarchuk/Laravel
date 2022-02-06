@@ -1,3 +1,1 @@
-Hello, {{ $name }}
-<br>
-{{ $someVeriable }}
+Hello, {{ Auth::user()->name }}

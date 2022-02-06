@@ -135,6 +135,7 @@ return [
     ],
     'attributes' => [
         'title' => 'наименование',
-        'author' => 'автор'
+        'author' => 'автор',
+        'password' => 'пароль'
     ],
 ];

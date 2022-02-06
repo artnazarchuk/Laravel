@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CommitController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
@@ -26,12 +27,23 @@ Route::get('/', function () {
 
 
 //admin routes
+Route::group(['middleware' => 'auth'], function () {
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
-    Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
-        ->name('index');
-    Route::resource('/news', AdminNewsController::class);
-    Route::resource('/categories', AdminCategoryController::class);
+    Route::get('/account', AccountController::class)
+        ->name('account');
+
+    Route::get('/account/logout', function () {
+        \Auth::logout();
+        return redirect()->route('login');
+    })->name('account.logout');
+
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function() {
+        Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
+            ->name('index');
+        Route::resource('/news', AdminNewsController::class);
+        Route::resource('/categories', AdminCategoryController::class);
+    });
+
 });
 
 //news.store
@@ -65,3 +77,17 @@ Route::get('/collection', function() {
 });
 
 Route::resource('/content', ContentController::class);
+
+//Helper Session
+
+Route::get('/session', function() {
+    if(session()->has('title')) {
+        //dd(session()->all(), session()->get('title'));
+        session()->forget('title');
+    }
+
+    session(['title' => 'name']);
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
