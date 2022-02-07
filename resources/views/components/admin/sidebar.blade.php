@@ -19,6 +19,12 @@
             Категории
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link @if(request()->routeIs('admin.users.*')) active @endif" href="{{ route('admin.users.index') }}">
+            <span data-feather="users"></span>
+            Пользователи
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

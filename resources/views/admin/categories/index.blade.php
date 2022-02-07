@@ -56,14 +56,13 @@
             elements.forEach(function (element, key) {
                 element.addEventListener('click', function() {
                     const id = element.getAttribute('rel');
-                        if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
-                            send('/admin/categories/' + id).then( function () {
-                                location.reload();
-                            });
-                            
-                        }
-                    })
-                });
+                    if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
+                        send('/admin/categories/' + id).then( function () {
+                            location.reload();
+                        }); 
+                    }
+                })
+            });
         });
 
         async function send(url) {
