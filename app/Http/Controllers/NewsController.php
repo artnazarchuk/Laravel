@@ -13,16 +13,16 @@ class NewsController extends Controller
         $news = News::query()
             ->select(News::$availableFields)
             ->get();
-
+        
         return view('news.index', [
             'newsList' => $news
-        ]);
+        ]); 
     }
 
-    public function show(News $news)
+    public function show(News $id)
     {   
         return view('news.show', [
-            'news' => $news
+            'news' => $id
         ]);
     }
 }
