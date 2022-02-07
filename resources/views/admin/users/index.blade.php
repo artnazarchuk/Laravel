@@ -35,7 +35,7 @@
                         <td>{{ $user->is_admin }}</td>
                         <td>
                             <a href="{{ route('admin.users.edit', ['user' => $user]) }}">Ред.</a> &nbsp;
-                            <a href="javascript:;" class="delete" rel="{{ $user->id }}" style="color:red;">Уд.</a>
+                            {{-- <a href="javascript:;" class="delete" rel="{{ $user->id }}" style="color:red;">Уд.</a> --}}
                         </td>
                     </tr>
                 @empty
@@ -43,19 +43,6 @@
                 @endforelse
             </tbody>
         </table>
-        {{-- {{ $users->links() }} --}}
+        {{ $users->links() }}
     </div>
 @endsection
-
-{{-- {{ dd($users); }} --}}
-
-{{-- "id" => 1
-"name" => "Администратор"
-"email" => "Sel_IT@tut.by"
-"email_verified_at" => null
-"password" => "$2y$10$6aLv55vZWwk1Ym7lMun/Y.v1SFR2K5BTyoSOZVCgscwLmVpT55OUa"
-"remember_token" => "DN9vdPNUmbbpdoF4QbyTMXJA7E6tEuNMZVpa1dqhc0lcBt7UlADgqNhgxoct"
-"created_at" => "2022-02-06 10:25:05"
-"updated_at" => "2022-02-06 12:38:00"
-"last_login_at" => null
-"is_admin" => 1 --}}
