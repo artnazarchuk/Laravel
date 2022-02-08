@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserLoginEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -39,9 +40,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function authenticate(Request $request, $user)
+    protected function authenticated(Request $request, $user)
     {
-        $user->last_login_at = now();
-        $user->save();
+        event(new UserLoginEvent($user));
     }
 }

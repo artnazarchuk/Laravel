@@ -10,6 +10,7 @@ use App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\ParserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,13 +40,14 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('account.logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function() {
+        Route::get('/parser', ParserController::class)
+            ->name('parser');
         Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
             ->name('index');
         Route::resource('/news', AdminNewsController::class);
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/users', AdminUserController::class);
     });
-
 });
 
 //news.store
