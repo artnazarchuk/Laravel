@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Вход') }}</div>
 
                 <div class="card-body">
+                    <a href="{{ route('social.redirect', ['network' => 'vkontakte']) }}" class="btn btn-primary">Войти через VK</a>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

@@ -22,7 +22,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserLoginEvent::class => [
             LastLoginUpdateListener::class,
-        ]
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // ... other providers
+            \SocialiteProviders\VKontakte\VKontakteExtendSocialite::class.'@handle',
+        ],
     ];
 
     /**

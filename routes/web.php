@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +96,14 @@ Route::get('/session', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ 
+
+
+//Socialite
+Route::group(['middleware' => 'guest', 'prefix' => 'auth', 'as' => 'social.'], function () {
+    Route::get('/{network}/redirect', [SocialController::class, 'redirect'])
+        ->name('redirect');
+     
+    Route::get('/{network}/callback', [SocialController::class, 'callback'])
+        ->name('callback');
+});
