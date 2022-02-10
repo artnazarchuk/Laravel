@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function() {
         Route::get('/parser', ParserController::class)
-            ->name('parser');
+            ->name('parser');  
         Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
             ->name('index');
         Route::resource('/news', AdminNewsController::class);
@@ -107,5 +107,7 @@ Route::group(['middleware' => 'guest', 'prefix' => 'auth', 'as' => 'social.'], f
     Route::get('/{network}/callback', [SocialController::class, 'callback'])
         ->name('callback');
 });
+
+
 
        

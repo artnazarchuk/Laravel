@@ -16,7 +16,7 @@
 @section('content')
     @include('inc.message')
     <div>
-        <form method="post" action="{{ route('admin.categories.store')}}">
+        <form method="post" action="{{ route('admin.categories.store') }}">
             @csrf
             <div class="form-group">
                 <label for="title">Наименование категории</label>
@@ -31,5 +31,8 @@
             <br>
             <button type="submit" class="btn btn-success" style="float: right;">Сохранить</button>
         </form>
+    </div>
+    <div>
+        <a href="{{ route('admin.categories.store') }}" class="btn btn-primary">Парсинг новостей</a> {{--  Пока так, потом буду переделовать --}}
     </div>
 @endsection

@@ -10,9 +10,9 @@ class ParserController extends Controller
 {
     public function __invoke(Request $request, Parser $service) 
     {
-        dd(
-            $service->load('https://news.yandex.ru/movies.rss')
-                    ->start()
-        );
+        $parser = $service->load('https://news.yandex.ru/movies.rss')
+                    ->start();
+        return $parser;    
     }
+    
 }
