@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\ParserController;
 use App\Http\Requests\Category\CreateRequest;
 use App\Http\Requests\Category\EditRequest;
 use App\Models\Category;

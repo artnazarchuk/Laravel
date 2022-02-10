@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show']) 
+Route::get('/news/{news}', [NewsController::class, 'show']) 
     ->where('news', '\d+')                                   
     ->name('news.show');
 
@@ -107,3 +107,5 @@ Route::group(['middleware' => 'guest', 'prefix' => 'auth', 'as' => 'social.'], f
     Route::get('/{network}/callback', [SocialController::class, 'callback'])
         ->name('callback');
 });
+
+       
