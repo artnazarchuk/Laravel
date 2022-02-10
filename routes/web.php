@@ -10,6 +10,8 @@ use App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,13 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('account.logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function() {
+        Route::get('/parser', ParserController::class)
+            ->name('parser');
         Route::view('/', 'admin.index', ['someVeriable' => 'someText'])
             ->name('index');
         Route::resource('/news', AdminNewsController::class);
         Route::resource('/categories', AdminCategoryController::class);
         Route::resource('/users', AdminUserController::class);
     });
-
 });
 
 //news.store
@@ -53,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show']) 
+Route::get('/news/{news}', [NewsController::class, 'show']) 
     ->where('news', '\d+')                                   
     ->name('news.show');
 
@@ -93,3 +96,16 @@ Route::get('/session', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ 
+
+
+//Socialite
+Route::group(['middleware' => 'guest', 'prefix' => 'auth', 'as' => 'social.'], function () {
+    Route::get('/{network}/redirect', [SocialController::class, 'redirect'])
+        ->name('redirect');
+     
+    Route::get('/{network}/callback', [SocialController::class, 'callback'])
+        ->name('callback');
+});
+
+       
