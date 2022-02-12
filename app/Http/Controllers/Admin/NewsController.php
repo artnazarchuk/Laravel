@@ -8,6 +8,7 @@ use App\Http\Requests\News\CreateRequest;
 use App\Http\Requests\News\EditRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\UploadService;
 
 class NewsController extends Controller
 {
@@ -19,9 +20,9 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::query()
-            ->whereHas('category', function($query) {
-                $query->where('id', '<', 10);
-            })
+            ->whereHas('category', /*function($query) {
+                $query->where('id', '<', 50);
+            }*/)
             ->with('category')
             //->select(News::$availableFields)
             ->paginate(5);
@@ -100,9 +101,13 @@ class NewsController extends Controller
      */
     public function update(EditRequest $request, News $news)
     {
-        $updated = $news->fill($request->validated() + [
-            'slug' => \Str::slug($request->input('title'))
-        ])->save();
+        $validated = $request->validated();
+
+        if($request->hasFile('image')) {
+            $validated['image'] = app(UploadService::class)->start($request->file('image'));
+        }
+
+        $updated = $news->fill($validated)->save();
 
         if($updated)  {
             return redirect()->route('admin.news.index')

@@ -11,7 +11,7 @@ interface Parser
     public function load(string $link): self;
 
     /**
-     * @return array
+     * @return void
      */
-    public function start(): array;
+    public function start(): void;
 }

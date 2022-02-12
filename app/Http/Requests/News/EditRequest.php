@@ -28,7 +28,7 @@ class EditRequest extends FormRequest
             'title' => ['required', 'string', 'min:5'],
             'author' => ['required', 'string', 'min:2'],
             'status' => ['required', 'string'],
-            'image' => ['nullabel', 'file', 'image', 'mimes:jpg.png'],
+            'image' => ['nullable', 'file', 'image', 'mimes:jpg,png'],
             'description' => ['nullable', 'string', 'max:1000'],
             'display' => ['nullable', 'boolean']
         ];
