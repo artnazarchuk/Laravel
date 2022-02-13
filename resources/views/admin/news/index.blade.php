@@ -58,16 +58,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             const elements = document.querySelectorAll('.delete');
             elements.forEach(function (element, key) {
-                    element.addEventListener('click', function() {
-                    const id = element.getAttribute('rel');
-                        if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
-                            send('/admin/news/' + id).then( function () {
-                                location.reload();
-                            });
-                            
-                        }
-                    })
-                });
+                element.addEventListener('click', function() {
+                const id = element.getAttribute('rel');
+                    if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
+                        send('/admin/news/' + id).then( function () {
+                            location.reload();
+                        }); 
+                    }
+                })
+            });
         });
 
         async function send(url) {
@@ -78,7 +77,7 @@
                 }
             });
             let result = await response.json();
-            return result.ok;
+            console.log(result.ok);
         }
     </script>
 @endpush

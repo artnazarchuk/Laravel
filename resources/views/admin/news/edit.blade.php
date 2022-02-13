@@ -49,7 +49,11 @@
             </div>
             <div class="form-group">
                 <label for="image">Изображение</label>
-                <img src="{{ Storage::disk('public')->url($news->image) }}" style="width:250px;"> &nbsp; <a href="javascript:;">[X]</a>
+                
+                <img src="{{ Storage::disk('public')->url($news->image) }}" style="width:250px;"> &nbsp;
+
+                <a href="javascript:;" id="delete" rel="{{ $news->image }}">[X]</a>
+
                 <input type="file" class="form-control" id="image" name="image">
             </div>
             <div class="form-group">
@@ -67,6 +71,17 @@
             .create( document.querySelector( '#description' ) )
             .catch( error => {
                 console.error( error );
-            } );
+            });
     </script>
+@endpush
+@push('js')
+   <script>
+       
+        let element = document.getElementById('delete');
+        element.addEventListener('click', function() {
+                let url = element.getAttribute('rel');
+                console.log( url );
+            });
+    
+   </script>
 @endpush

@@ -85,6 +85,12 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+
+        // $response = [
+            
+        // ];
+        //dd($response);
+
         $categories = Category::all();
         return view('admin.news.edit', [
             'news' => $news,
@@ -125,11 +131,13 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
+        
         try{
             $news->delete();
             return response()->json('ok');
         }catch(\Exception $element) {
             \Log::error("Error dalete news item");
         }
+
     }
 }
