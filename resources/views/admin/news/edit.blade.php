@@ -76,10 +76,14 @@
 @endpush
 @push('js')
    <script>
-       
+       //Тут будет удаление картинки
+
         let element = document.getElementById('delete');
+
         element.addEventListener('click', function() {
+
                 let url = element.getAttribute('rel');
+                
                 console.log( url );
             });
     

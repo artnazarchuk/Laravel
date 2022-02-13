@@ -86,11 +86,6 @@ class NewsController extends Controller
     public function edit(News $news)
     {
 
-        // $response = [
-            
-        // ];
-        //dd($response);
-
         $categories = Category::all();
         return view('admin.news.edit', [
             'news' => $news,

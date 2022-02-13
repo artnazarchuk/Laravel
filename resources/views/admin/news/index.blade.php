@@ -77,7 +77,7 @@
                 }
             });
             let result = await response.json();
-            console.log(result.ok);
+            return result.ok;
         }
     </script>
 @endpush
