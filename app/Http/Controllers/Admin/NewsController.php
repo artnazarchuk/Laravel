@@ -141,7 +141,7 @@ class NewsController extends Controller
     {
         
 
-        \Storage::delete('public/news/YQf8X7Og0MfkLZ5yhIuD5WQwIGtAmvCN99R9gV8F.jpg');
+        \Storage::delete('сюда должен попасть url JS c views/news/edit.blade.php');
         
         // if(Storage::exists('upload/test.png')){
         //     Storage::delete('upload/test.png');
