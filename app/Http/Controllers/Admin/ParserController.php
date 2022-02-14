@@ -38,3 +38,7 @@ class ParserController extends Controller
         return "Parsing completed!";
     }
 }
+
+// Для запии в БД можно использовать метод insert()
+// вы можете сформировать массив $news[] = [...parsing_data] 
+// и вызвать метод insert News::query()->insert($news);

@@ -51,6 +51,7 @@
         </table>
         {{ $newsList->links() }}
     </div>
+  
 @endsection
 
 @push('js')

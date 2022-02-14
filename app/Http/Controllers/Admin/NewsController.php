@@ -108,6 +108,7 @@ class NewsController extends Controller
             $validated['image'] = app(UploadService::class)->start($request->file('image'));
         }
 
+
         $updated = $news->fill($validated)->save();
 
         if($updated)  {
@@ -134,5 +135,22 @@ class NewsController extends Controller
             \Log::error("Error dalete news item");
         }
 
+    }
+
+    public function deleteimage(Request $request)
+    {
+        
+
+        \Storage::delete('public/news/YQf8X7Og0MfkLZ5yhIuD5WQwIGtAmvCN99R9gV8F.jpg');
+        
+        // if(Storage::exists('upload/test.png')){
+        //     Storage::delete('upload/test.png');
+        //     /*
+        //         Delete Multiple File like this way
+        //         Storage::delete(['upload/test.png', 'upload/test2.png']);
+        //     */
+        // }else{
+        //     dd('File does not exists.');
+        // }
     }
 }

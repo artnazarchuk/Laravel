@@ -82,10 +82,29 @@
 
         element.addEventListener('click', function() {
 
-                let url = element.getAttribute('rel');
-                
-                console.log( url );
-            });
-    
+            const url = element.getAttribute('rel');
+
+            if(confirm('Подверждаете удаление картинки?')) {
+                send('public/' + url).then( function () {
+                    //location.reload();
+                }); 
+            }
+        });
+
+        async function send(url) {
+            console.log( url );
+        
+        //     let response = await fetch(url, {
+        //         method: 'POST'
+        //             headers: {
+        //                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //             }
+        //     });
+            // let result = await response.json();
+
+        }
    </script>
 @endpush
+
+
+
