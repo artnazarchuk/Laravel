@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 
 class Source extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     protected $table = 'sources';
 
@@ -19,7 +17,6 @@ class Source extends Model
      * @var array
      */
     protected $fillable = [
-        'link',
-
+        'links'
     ];
 }
