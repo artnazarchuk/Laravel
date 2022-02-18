@@ -16,7 +16,11 @@ class SourceController extends Controller
      */
     public function index()
     {
-        //
+        $sources = Source::query()
+            ->get();
+        return view('admin.sources.index', [
+            'sources' => $sources
+        ]);
     }
 
     /**
@@ -27,8 +31,8 @@ class SourceController extends Controller
     public function create()
     {
         $sources = Source::all();
-        return view('admin.source.create', [
-            'categories' => $categories
+        return view('admin.sources.create', [
+            'sources' => $sources
         ]);
     }
 

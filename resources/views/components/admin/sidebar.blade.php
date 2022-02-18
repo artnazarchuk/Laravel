@@ -25,6 +25,12 @@
             Пользователи
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link @if(request()->routeIs('admin.sources.*')) active @endif" href="{{ route('admin.sources.index') }}">
+            <span data-feather="layers"></span>
+            Ресурсы
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
