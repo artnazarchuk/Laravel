@@ -49,9 +49,11 @@ class CategoryController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        
+       
         $created = Category::create($request->validated());
-        dd($created);
+        
+
+        
         if($created) {
             return redirect()->route('admin.categories.index')
                 ->with('success', 'Запись успешно добавлена');

@@ -28,6 +28,6 @@
         </form>
     </div>
     <div>
-        <a href="{{ route('admin.categories.store') }}" class="btn btn-primary">Добавить ресурс</a>
+        <a href="{{ route('admin.sources.store') }}" class="btn btn-primary">Загрузить ресурс</a>
     </div>
 @endsection

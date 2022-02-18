@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Source\CreateRequest;
-//use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\Admin\ParserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Source;
@@ -42,14 +42,18 @@ class SourceController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        
+
+
         $created = Source::create($request->validated());
+        dd($created);
+
             if($created) {
                 return redirect()->route('admin.sources.index')
                     ->with('success', 'Запись успешно добавлена');
             }
             return back()->with('error', 'Не удалось добавить запись')
                         ->withInput();
+        
     }
 
     /**
