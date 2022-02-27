@@ -52,7 +52,7 @@
                 
                 <img src="{{ Storage::disk('public')->url($news->image) }}" style="width:250px;"> &nbsp;
 
-                <a href="javascript:;" id="delete" rel="{{ $news->image }}">[X]</a>
+                <a href="javascript:;" id="delete" rel="{{ $news->id }}">[X]</a>
 
                 <input type="file" class="form-control" id="image" name="image">
             </div>
@@ -82,26 +82,25 @@
 
         element.addEventListener('click', function() {
 
-            const url = element.getAttribute('rel');
-
+            const id = element.getAttribute('rel');
+           
             if(confirm('Подверждаете удаление картинки?')) {
-                send('public/' + url).then( function () {
-                    //location.reload();
+                send('/admin/news/' + id).then( function () {
+                    location.reload();
                 }); 
             }
         });
 
         async function send(url) {
-            console.log( url );
-        
-        //     let response = await fetch(url, {
-        //         method: 'POST'
-        //             headers: {
-        //                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        //             }
-        //     });
-            // let result = await response.json();
-
+            console.log(url);
+            let response = await fetch(url, {
+                method: 'GET', 
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+            let result = await response.json();
+            return result.ok;
         }
    </script>
 @endpush

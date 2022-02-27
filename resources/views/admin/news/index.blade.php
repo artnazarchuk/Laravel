@@ -71,6 +71,7 @@
         });
 
         async function send(url) {
+            console.log(url);
             let response = await fetch(url, {
                 method: 'DELETE', 
                 headers: {

@@ -11,7 +11,7 @@ class News extends Model
 {
     use HasFactory, Sluggable;
 
-    public static $availableFields = ['id', 'title', 'author', 'status', 'description','image', 'created_at'];
+    public static $availableFields = ['id', 'title', 'author', 'status', 'description', 'image', 'created_at'];
 
     protected $table = 'news';
 

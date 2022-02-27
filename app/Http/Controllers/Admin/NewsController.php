@@ -74,7 +74,17 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        //dd($news->image);
+    
+        try{
+            
+            \Storage::delete('public/' . $news->image); //удаление картинки
+             
+             return response()->json('ok');
+         }catch(\Exception $element) {
+             \Log::error("Error dalete news item");
+         }
+      
     }
 
     /**
@@ -102,6 +112,9 @@ class NewsController extends Controller
      */
     public function update(EditRequest $request, News $news)
     {
+        
+       
+
         $validated = $request->validated();
 
         if($request->hasFile('image')) {
@@ -127,30 +140,14 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        
+    
         try{
+           // \Storage::delete('public/' . $news->image); //удаление картинки
             $news->delete();
             return response()->json('ok');
         }catch(\Exception $element) {
             \Log::error("Error dalete news item");
         }
 
-    }
-
-    public function deleteimage(Request $request)
-    {
-        
-
-        \Storage::delete('сюда должен попасть url JS c views/news/edit.blade.php');
-        
-        // if(Storage::exists('upload/test.png')){
-        //     Storage::delete('upload/test.png');
-        //     /*
-        //         Delete Multiple File like this way
-        //         Storage::delete(['upload/test.png', 'upload/test2.png']);
-        //     */
-        // }else{
-        //     dd('File does not exists.');
-        // }
     }
 }
