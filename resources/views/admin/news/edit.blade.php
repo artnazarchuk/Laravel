@@ -49,7 +49,11 @@
             </div>
             <div class="form-group">
                 <label for="image">Изображение</label>
-                <img src="{{ Storage::disk('public')->url($news->image) }}" style="width:250px;"> &nbsp; <a href="javascript:;">[X]</a>
+                
+                <img src="{{ Storage::disk('public')->url($news->image) }}" style="width:250px;"> &nbsp;
+
+                <a href="javascript:;" id="delete" rel="{{ $news->id }}">[X]</a>
+
                 <input type="file" class="form-control" id="image" name="image">
             </div>
             <div class="form-group">
@@ -67,6 +71,39 @@
             .create( document.querySelector( '#description' ) )
             .catch( error => {
                 console.error( error );
-            } );
+            });
     </script>
 @endpush
+@push('js')
+   <script>
+       //Тут будет удаление картинки
+
+        let element = document.getElementById('delete');
+
+        element.addEventListener('click', function() {
+
+            const id = element.getAttribute('rel');
+           
+            if(confirm('Подверждаете удаление картинки?')) {
+                send('/admin/news/' + id).then( function () {
+                    location.reload();
+                }); 
+            }
+        });
+
+        async function send(url) {
+            console.log(url);
+            let response = await fetch(url, {
+                method: 'GET', 
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+            let result = await response.json();
+            return result.ok;
+        }
+   </script>
+@endpush
+
+
+

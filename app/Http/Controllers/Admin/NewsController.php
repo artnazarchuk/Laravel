@@ -74,7 +74,17 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        //dd($news->image);
+    
+        try{
+            
+            \Storage::delete('public/' . $news->image); //удаление картинки
+             
+             return response()->json('ok');
+         }catch(\Exception $element) {
+             \Log::error("Error dalete news item");
+         }
+      
     }
 
     /**
@@ -85,6 +95,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+
         $categories = Category::all();
         return view('admin.news.edit', [
             'news' => $news,
@@ -101,11 +112,15 @@ class NewsController extends Controller
      */
     public function update(EditRequest $request, News $news)
     {
+        
+       
+
         $validated = $request->validated();
 
         if($request->hasFile('image')) {
             $validated['image'] = app(UploadService::class)->start($request->file('image'));
         }
+
 
         $updated = $news->fill($validated)->save();
 
@@ -125,11 +140,14 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
+    
         try{
+           // \Storage::delete('public/' . $news->image); //удаление картинки
             $news->delete();
             return response()->json('ok');
         }catch(\Exception $element) {
             \Log::error("Error dalete news item");
         }
+
     }
 }

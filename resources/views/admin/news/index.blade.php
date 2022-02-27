@@ -51,6 +51,7 @@
         </table>
         {{ $newsList->links() }}
     </div>
+  
 @endsection
 
 @push('js')
@@ -58,19 +59,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const elements = document.querySelectorAll('.delete');
             elements.forEach(function (element, key) {
-                    element.addEventListener('click', function() {
-                    const id = element.getAttribute('rel');
-                        if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
-                            send('/admin/news/' + id).then( function () {
-                                location.reload();
-                            });
-                            
-                        }
-                    })
-                });
+                element.addEventListener('click', function() {
+                const id = element.getAttribute('rel');
+                    if(confirm('Подверждаете удаление с записи ID =' + id + ' ?')) {
+                        send('/admin/news/' + id).then( function () {
+                            location.reload();
+                        }); 
+                    }
+                })
+            });
         });
 
         async function send(url) {
+            console.log(url);
             let response = await fetch(url, {
                 method: 'DELETE', 
                 headers: {

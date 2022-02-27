@@ -18,3 +18,5 @@ class ContentController extends Controller
         dd($collection);
     }
 }
+
+//
